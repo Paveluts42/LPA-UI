@@ -1,0 +1,59 @@
+$primary: #886F68;
+$on-primary: #fff;
+$secondary: #d9ebff;
+$on-secondary:#314f6f;
+$delete: #c63737;
+$on-delete: #fff;
+$delete-secondary: #fadadd;
+$bascet-hover: #f9c5c6;
+$white: #ffffff;
+$black: #000000;
+$secondary-text: #c63737;
+$striped: #f7f7f7;
+
+$primary-active: #597eaa;
+$secondary-active: #99c3ed;
+$outline-active: #ececea;
+$delete-active: #d46969;
+$delete-secondary-active: #f8afaf;
+
+$primary-hover: #274361;
+$secondary-hover: #c0dcff;
+$outline-hover: #ececea;
+$delete-hover: #cd5050;
+$delete-secondary-hover: #fcc9ce;
+$border-table: #d9d9d9;
+$disabled-text: #aaaaab;
+$paginator: #f9fafb;
+$radio-border: #717177;
+$locked: #c6c6c6;
+:export {
+  primary: $primary;
+  on-primary: $on-primary;
+  secondary: $secondary;
+  on-secondary:$on-secondary;
+  delete: $delete;
+  on-delete: $on-delete;
+  delete-secondary: #fadadd;
+  bascet-hover: #f9c5c6;
+  white: #ffffff;
+  black: #000000;
+  secondary-text: #c63737;
+  striped: #f7f7f7;
+
+  primary-active: #597eaa;
+  secondary-active: #99c3ed;
+  delete-active: #d46969;
+  delete-secondary-active: #f8afaf;
+
+  primary-hover: #274361;
+  secondary-hover: #c0dcff;
+  outline-hover: #ececea;
+  delete-hover: #cd5050;
+  delete-secondary-hover: #f8afaf;
+  border-table: #d9d9d9;
+  disabled-text: #aaaaab;
+  paginator: #f9fafb;
+  radio-border: #717177;
+  locked: #c6c6c6;
+}

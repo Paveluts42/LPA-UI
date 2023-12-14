@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "airbnb",
+    "airbnb-typescript/base"
+  ],
+  "rules": {
+    "react/require-default-props": "off",
+    "react/jsx-props-no-multi-spaces": "off",
+    "react/jsx-filename-extension": "off",
+    "no-nested-ternary": "off",
+    "react/function-component-definition": "off",
+    "react/jsx-props-no-spreading": "off"
+  },
+  "parserOptions": {
+    "project": ["tsconfig.json"]
+  }
+}

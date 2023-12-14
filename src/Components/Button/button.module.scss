@@ -1,0 +1,228 @@
+@use "../../../palette" as palette;
+
+.button {
+  height: 100% !important;
+  width: 100% !important;
+  border: none;
+  border-radius: 4px;
+  background-color: #ececea;
+  color: #aaaaab;
+  outline: none;
+  white-space: nowrap;
+  user-select: none;
+
+  &--disabled {
+    composes: button;
+
+
+    svg {
+      path {
+        fill: palette.$disabled-text;
+      }
+    }
+
+    &:focus {
+
+      outline: none;
+    }
+  }
+
+  &--disabled {
+    composes: button;
+
+    svg {
+      path {
+        fill: palette.$disabled-text;
+      }
+    }
+
+    &:focus {
+
+      outline: none;
+    }
+  }
+
+  &--disabled:focus {
+    box-shadow: 0 0 0 0 !important;
+  }
+
+  &:focus {
+    outline: 2px transparent solid;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px palette.$primary;
+    outline: none;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: 0 0 0 0;
+  }
+
+  &:-moz-focusring {
+    outline: 2px transparent solid;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px palette.$primary;
+    outline: none;
+  }
+
+  &--primary {
+    composes: button;
+    background-color: palette.$primary;
+    color: palette.$white;
+
+    svg {
+      path {
+        fill: palette.$white;
+      }
+    }
+
+    &:hover {
+      background-color: palette.$primary-hover;
+
+      &:active {
+        background-color: palette.$primary-active;
+      }
+    }
+  }
+
+  &--secondary {
+    composes: button;
+    background-color: palette.$secondary;
+    color: palette.$primary;
+
+    &:hover {
+      background-color: palette.$secondary-hover;
+
+      &:active {
+        background-color: palette.$secondary-active;
+      }
+    }
+  }
+
+  &--outline {
+    composes: button;
+    background-color: palette.$white;
+    color: palette.$primary;
+    box-sizing: border-box;
+    border: 1px solid palette.$primary;
+
+    svg {
+      path {
+        fill: palette.$primary;
+      }
+    }
+
+    &:hover {
+      background-color: palette.$outline-hover;
+
+      &:active {
+        background-color: palette.$outline-active;
+      }
+    }
+  }
+
+  &--delete {
+    composes: button;
+    background-color: palette.$delete;
+    color: palette.$white;
+
+    svg {
+      path {
+        fill: palette.$white;
+      }
+    }
+
+    &:focus {
+      outline: 2px transparent solid;
+      box-shadow: 0 0 0 2px white, 0 0 0 3px palette.$delete;
+      outline: none;
+    }
+
+    &:-moz-focusring {
+      outline: 2px transparent solid;
+      box-shadow: 0 0 0 2px white, 0 0 0 3px palette.$delete;
+      outline: none;
+    }
+
+    &:hover {
+      background-color: palette.$delete-hover;
+
+      &:active {
+        background-color: palette.$delete-active;
+      }
+    }
+  }
+
+  &--delete-secondary {
+    composes: button;
+    background-color: palette.$delete-secondary;
+    color: palette.$secondary-text;
+
+    &:focus {
+      outline: 2px transparent solid;
+      box-shadow: 0 0 0 2px white, 0 0 0 3px palette.$delete;
+      outline: none;
+    }
+
+    &:-moz-focusring {
+      outline: 2px transparent solid;
+      box-shadow: 0 0 0 2px white, 0 0 0 3px palette.$delete;
+      outline: none;
+    }
+
+    svg {
+      path {
+        fill: palette.$secondary-text;
+      }
+    }
+
+    &:hover {
+      background-color: palette.$delete-secondary-hover;
+
+      &:active {
+        background-color: palette.$delete-secondary-active;
+      }
+    }
+  }
+
+  &--table {
+    composes: button;
+    background-color: transparent;
+    color: palette.$primary;
+
+    &:focus {
+      outline: 2px transparent solid;
+      box-shadow: 0 0 0 2px white, 0 0 0 3px palette.$primary;
+      outline: none;
+      background-color: palette.$white;
+    }
+
+    &:hover {
+      background-color: palette.$outline-hover;
+
+      &:active {
+        background-color: palette.$secondary;
+      }
+    }
+  }
+
+  &--icon-small {
+    composes: button;
+    background-color: transparent;
+    color: palette.$primary;
+    cursor: pointer;
+
+    &:focus {
+      outline: 2px transparent solid;
+      box-shadow: 0 0 0 2px white, 0 0 0 3px palette.$primary;
+      outline: none;
+      background-color: palette.$white;
+    }
+
+    &:hover {
+      background-color: palette.$outline-hover;
+
+      &:active {
+        background-color: palette.$secondary;
+      }
+    }
+  }
+}
