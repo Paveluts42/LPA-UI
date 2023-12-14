@@ -5,9 +5,13 @@
   ],
   "rules": {
     "react/require-default-props": "off",
+    "jsx-a11y/control-has-associated-label": "off",
     "react/jsx-props-no-multi-spaces": "off",
+    "import/prefer-default-export": "off",
     "react/jsx-filename-extension": "off",
     "no-nested-ternary": "off",
+    "import/extensions": "off",
+    "import/no-extraneous-dependencies": "off",
     "react/function-component-definition": "off",
     "react/jsx-props-no-spreading": "off"
   },

@@ -1,5 +1,4 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Button } from '../index';
@@ -27,5 +26,5 @@ export const ButtonSimpleSmall = Template.bind({});
 ButtonSimpleSmall.args = {
   color: '#000000',
   small: true,
-  children: 'small',
+  children: 'medium size',
 };
