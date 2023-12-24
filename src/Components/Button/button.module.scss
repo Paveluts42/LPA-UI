@@ -7,8 +7,6 @@
   color: inherit;
   background: none;
   cursor: pointer;
-  padding: sizes.$medium_button_Padding ;
-  min-width: sizes.$button_Min_width ;
   display: inline-block;
   margin: 8px;
   border-radius: sizes.$button_Border_radius ;
@@ -30,7 +28,18 @@
 }
 
 
-
+.btn-small{
+  padding: sizes.$small_button_Padding ;
+  min-width: sizes.$button_Min_width ;
+}
+.btn-medium{
+  padding: sizes.$medium_button_Padding ;
+  min-width: sizes.$button_Min_width ;
+}
+.btn-large{
+  padding: sizes.$large_button_Padding ;
+  min-width: sizes.$button_Min_width ;
+}
 
 
 /* Icon separator */
@@ -43,14 +52,14 @@
 }
 /* Button Main*/
 .btn-main {
-  background: #34495e;
-  color: #fff;
+  background: palette.$main-el-background;
+  color: palette.$on-main-color;
   &:hover{
-    background: #2c3e50;
+    background: palette.$main-el-background-hover;
 
   }
   &:active{
-    background: #2c3e50;
+    background: palette.$main-el-background-hover;
     top: 2px;
 
   }
@@ -59,70 +68,64 @@
 
 
 
-/* Button 1 */
-.btn-1 {
-  background: #3498db;
-  color: #fff;
+/* Button info */
+.btn-info {
+  background: palette.$info-el-background;
+  color: palette.$on-info-color;
+  &:hover {
+    background: palette.$info-el-background-hover;
+  }
+  &:active {
+    background: palette.$info-el-background-hover;
+    top: 2px;
+  }
 }
 
-.btn-1:hover {
-  background: #2980b9;
+
+
+/* Button warning */
+.btn-warning {
+  background: palette.$warning-el-background;
+  color: palette.$on-warning-color;
+  &:hover {
+    background: palette.$warning-el-background-hover;
+  }
+  &:active {
+    background: palette.$warning-el-background-hover;
+    top: 2px;
+  }
 }
 
-.btn-1:active {
-  background: #2980b9;
-  top: 2px;
+/* Button success */
+.btn-success {
+  background: palette.$success-el-background;
+  color: palette.$on-success-color;
+  &:hover {
+    background: palette.$success-el-background-hover;
+  }
+  &:active {
+    background: palette.$success-el-background-hover;
+    top: 2px;
+  }
+}
+/* Button delete */
+.btn-delete {
+  background: palette.$delete-el-background;
+  color: palette.$on-delete-color;
+  &:hover {
+    background: palette.$delete-el-background-hover;
+  }
+  &:active {
+    background: palette.$delete-el-background-hover;
+    top: 2px;
+  }
 }
 
-.btn-1:before {
-  position: absolute;
-  height: 100%;
-  left: 0;
-  top: 0;
-  line-height: 3;
-  font-size: 140%;
-  width: 60px;
-}
 
-/* Button Info */
-.btn-2 {
-  background: #2ecc71;
-  color: #fff;
-}
 
-.btn-2:hover {
-  background: #27ae60;
-}
 
-.btn-2:active {
-  background: #27ae60;
-  top: 2px;
-}
 
-.btn-2:before {
-  position: absolute;
-  height: 100%;
-  left: 0;
-  top: 0;
-  line-height: 3;
-  font-size: 140%;
-  width: 60px;
-}
 
-/* Button 3 */
-.btn-3 {
-  background: #e74c3c;
-  color: #fff;
-}
-
-.btn-3:hover {
-  background: #c0392b;
-}
-
-.btn-3:active {
-  background: #c0392b;
-  top: 2px;
-}
 
 
 

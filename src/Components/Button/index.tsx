@@ -7,22 +7,21 @@ export interface IButton extends InputHTMLAttributes<HTMLButtonElement> {
   height?: string | number;
   disabled?: boolean;
   title?: string;
-  // size?:'small' | 'medium' | 'large'
   color?: string;
   className?: string;
+  sizeBt?:'small' | 'medium' | 'large';
   onClick?: MouseEventHandler<HTMLButtonElement> | any;
   type?:
   | 'main'
   | 'info'
   | 'warning'
   | 'success'
-  | 'submit'
   | 'delete'
-  small?: boolean;
 }
 
 const Button: FC<IButton> = ({
   type = 'main',
+  sizeBt = 'medium',
   ...props
 }) => {
   const handelClick = (e: any): void => {
@@ -30,7 +29,6 @@ const Button: FC<IButton> = ({
     props.onClick(e);
   };
   const classes = `${props.className} `;
-  useClasses([cn.btn, cn.btn1]);
   return props.children ? (
     <div
       className={classes}
@@ -38,7 +36,7 @@ const Button: FC<IButton> = ({
       <button
         onClick={props.disabled ? undefined : handelClick}
         type="button"
-        className={useClasses([cn.btn, cn[`btn-${type}`]])}
+        className={useClasses([cn.btn, cn[`btn-${type}`], cn[`btn-${sizeBt}`]])}
       >
         {props.children}
       </button>

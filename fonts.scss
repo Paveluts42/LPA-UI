@@ -4,21 +4,18 @@
 }
 
 @mixin header1 {
-  font-family: "Inter";
   font-weight: 500;
   font-size: 36px;
   line-height: 44px;
 }
 
 @mixin header2 {
-  font-family: "Inter";
   font-weight: 500;
   font-size: 24px;
   line-height: 32px;
 }
 
 @mixin header3 {
-  font-family: "Inter";
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
@@ -30,22 +27,15 @@
   font-size: 0.9rem;
   line-height: 1.75;
 }
-@mixin font-paginator {
-  font-family: "Inter";
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-}
 
-@mixin table-header {
-  font-family: "Inter";
+
+@mixin paragraph {
   font-weight: 500;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 16px;
 }
 
 @mixin text {
-  font-family: "Inter";
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;

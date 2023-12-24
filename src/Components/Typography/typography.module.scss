@@ -1,0 +1,27 @@
+@use "../../../fonts" as fonts;
+@use "../../../palette" as palette;
+
+.light{
+  color: palette.$text-color--light;
+}
+.dark{
+  color: palette.$text-color--dark;
+}
+.header1{
+  @include fonts.header1
+}
+.header2{
+  @include fonts.header2
+}
+.header3{
+  @include fonts.header3
+}
+.font{
+  @include fonts.font
+}
+.paragraph {
+  @include fonts.paragraph
+}
+.text {
+  @include fonts.text
+}
