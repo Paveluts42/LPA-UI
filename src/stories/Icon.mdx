@@ -1,0 +1,56 @@
+import {IconsList} from "../Icons/set/IconsEnum";
+
+import {Icon} from "../index";
+
+
+
+## Icon
+
+
+
+<div style={{display:'block'}}>
+    <b>
+        Компонент иконки
+    </b>
+
+    <b>
+        Список иконок
+    </b>
+    <div style={{background: '#cccccc', width: '792px', display: 'flex', flexWrap: 'wrap'}}>
+
+
+
+            {Object.keys(IconsList).map(i => {
+
+
+
+                return <div key={i} style={{width: "220px" ,border:"2px solid #fff",height:"30px",padding:'20px'}}>
+
+                    <div style={{display: "flex" ,justifyContent:'space-between'}}>
+
+                        <div style={{fontSize: '20px'}}>
+
+                            {i}
+
+                        </div>
+
+                        <Icon component={i}/>
+
+                    </div>
+
+
+
+
+                </div>
+
+
+
+            })}
+
+
+
+        </div>
+</div>
+
+
+

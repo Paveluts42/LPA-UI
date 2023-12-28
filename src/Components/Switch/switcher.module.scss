@@ -1,0 +1,62 @@
+@use "../../../palette" as palette;
+
+
+.toggle {
+  appearance: none;
+  cursor: pointer;
+  width: 3em;
+  height: 1.45em;
+  background: #ddd;
+  vertical-align: middle;
+  border-radius: 1.6em;
+  position: relative;
+  outline: 0;
+  transition: background 0.1s ease-in-out;
+
+  &:after {
+    content: '';
+    width: 1.45em;
+    height: 1.45em;
+    background: white;
+    position: absolute;
+    border-radius: 2.2em;
+    transform: scale(0.7);
+    left: 0;
+    box-shadow: 0 1px #000000;
+    transition: left 0.1s ease-in-out;
+  }
+
+  &:checked::after {
+    left: 1.5em;
+  }
+}
+
+.main {
+  &:checked {
+    background: palette.$main-el-background;
+  }
+}
+
+.info {
+  &:checked {
+    background: palette.$info-el-background;
+  }
+}
+
+.warning {
+  &:checked {
+    background: palette.$warning-el-background;
+  }
+}
+
+.success {
+  &:checked {
+    background: palette.$success-el-background;
+  }
+}
+
+.delete {
+  &:checked {
+    background: palette.$delete-el-background;
+  }
+}

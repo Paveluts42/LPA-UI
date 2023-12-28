@@ -1,20 +1,16 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
+import type { Meta, StoryObj } from '@storybook/react';
 import { Typography } from '../index';
 
-export default {
-    title: 'Example/Typography',
+
+const meta: Meta<typeof Typography> = {
     component: Typography,
+};
 
-} as ComponentMeta<typeof Typography>;
+export default meta;
+type Story = StoryObj<typeof Typography>;
 
-
-const Template: ComponentStory<typeof Typography> = (args) => <Typography {...args} />;
-
-export const TypographyCmp = Template.bind({});
-TypographyCmp.args={
+export const TypographyView: Story = {
+    args:{
     children:'test'
-}
-
-
+    }
+};

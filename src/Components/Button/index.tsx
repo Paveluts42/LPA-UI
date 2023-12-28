@@ -1,6 +1,7 @@
 import React, { FC, InputHTMLAttributes, MouseEventHandler } from 'react';
 import cn from './button.module.scss';
 import { useClasses } from '../../hooks';
+import { SizeEnums, TypeEnums } from '../../Enums/typeEnums';
 
 export interface IButton extends InputHTMLAttributes<HTMLButtonElement> {
   width?: string | number
@@ -9,14 +10,9 @@ export interface IButton extends InputHTMLAttributes<HTMLButtonElement> {
   title?: string;
   color?: string;
   className?: string;
-  sizeBt?:'small' | 'medium' | 'large';
+  sizeBt?:SizeEnums;
   onClick?: MouseEventHandler<HTMLButtonElement> | any;
-  type?:
-  | 'main'
-  | 'info'
-  | 'warning'
-  | 'success'
-  | 'delete'
+  type?:TypeEnums
 }
 
 const Button: FC<IButton> = ({
@@ -36,6 +32,7 @@ const Button: FC<IButton> = ({
       <button
         onClick={props.disabled ? undefined : handelClick}
         type="button"
+        {...props}
         className={useClasses([cn.btn, cn[`btn-${type}`], cn[`btn-${sizeBt}`]])}
       >
         {props.children}
@@ -45,6 +42,7 @@ const Button: FC<IButton> = ({
     <button
       onClick={props.disabled ? undefined : handelClick}
       type="button"
+      {...props}
       className={
         `${cn.btn} ${cn[`btn-${type}`]} ${cn['icon-send']}`
 }

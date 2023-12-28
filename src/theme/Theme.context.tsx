@@ -1,38 +1,33 @@
-import React, {Dispatch, SetStateAction, useEffect} from 'react'
-import {ThemeType} from "./Theme.model";
-import {themeObject} from "./themeConfig";
-
-
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import { themeObject } from './themeConfig';
+import { ThemeEnums } from '../Enums/typeEnums';
 
 interface IThemeContext {
-    themeType: ThemeType;
-    theme: string,
-    setCurrentTheme: Dispatch<SetStateAction<ThemeType>>
+  theme: ThemeEnums,
+  setCurrentTheme: Dispatch<SetStateAction<ThemeEnums>>
 }
 
 export const ThemeContext = React.createContext<IThemeContext>({
-    themeType: 'light',
-    theme: 'string',
-} as IThemeContext)
+  themeType: 'light',
+  theme: 'light',
+} as IThemeContext);
 
-export  const ThemeProvider: React.FC<{theme:"dark"|"light";children:React.ReactNode}> = ({theme = "light", children}) => {
+export const ThemeProvider: React.FC<{ theme:ThemeEnums;children:React.ReactNode }> = ({ theme = 'light', children }) => {
+  const [currentTheme, setCurrentTheme] = React.useState<ThemeEnums>(theme);
 
-    const [currentTheme, setCurrentTheme] = React.useState<ThemeType>(theme)
-
-    useEffect(() => {
-        setCurrentTheme(theme)
-    }, [theme])
-    return (
-        <ThemeContext.Provider
-            value={{
-                themeType: currentTheme,
-                theme: themeObject[currentTheme]||"light",
-                setCurrentTheme
-            }}
-        >
-            {children}
-        </ThemeContext.Provider>
-    )
-}
-export const useTheme = () => React.useContext(ThemeContext)
-
+  useEffect(() => {
+    setCurrentTheme(theme);
+  }, [theme]);
+  return (
+    <ThemeContext.Provider
+      value={{
+        themeType: currentTheme,
+        theme: themeObject[currentTheme] || 'light',
+        setCurrentTheme,
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+export const useTheme = () => React.useContext(ThemeContext);

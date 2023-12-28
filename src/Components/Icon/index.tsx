@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
-import * as AllIcons from '../../Icons/set/IconsImport';
+import * as AllIcons from '../../Icons/set/index';
+import { IconsEnums } from '../../Icons/set/IconsEnum';
 
 export interface IconI {
-  component?: string;
+  component?:IconsEnums
   size?: string | number;
   color?: string;
 }
 
 const Icon: FC<IconI> = (props) => {
-  // @ts-ignore
   const Component = AllIcons[props.component || 'ArrowDown'];
 
   return (

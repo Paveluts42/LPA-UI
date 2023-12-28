@@ -1,1 +1,1 @@
-export const themeObject =  {light:"light", dark:"dark"}
+export const themeObject = { light: 'light', dark: 'dark' };

@@ -1,7 +1,7 @@
 import React, { CSSProperties, FC, ReactNode } from 'react';
 import cn from './typography.module.scss';
 import { useClasses } from '../../hooks';
-import { useTheme} from "../../theme/Theme.context";
+import { useTheme } from '../../theme/Theme.context';
 
 export interface ITypography {
   type?: 'header1' | 'header2' | 'header3' | 'font' | 'paragraph' | 'text',
@@ -14,13 +14,13 @@ export interface ITypography {
 }
 
 const Typography:FC<ITypography> = ({
-  children, type = 'font', className = '', paragraph = false, color , style,
+  children, type = 'font', className = '', paragraph = false, color, style,
 }) => {
-  const {theme}=useTheme()
+  const { theme } = useTheme();
   const classes = useClasses([
     className,
     cn[type],
-    cn[theme]
+    cn[theme],
   ]);
 
   return (
@@ -28,12 +28,12 @@ const Typography:FC<ITypography> = ({
 
       {paragraph
         ? (
-          <p style={{ ...style }} className={classes}>
+          <p style={{ ...style, color }} className={classes}>
             {children}
           </p>
         )
         : (
-          <div style={{ ...style }} className={classes}>
+          <div style={{ ...style, color }} className={classes}>
             {children}
           </div>
         )}
@@ -42,5 +42,4 @@ const Typography:FC<ITypography> = ({
   );
 };
 
-
-export default Typography
+export default Typography;

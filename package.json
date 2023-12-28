@@ -1,6 +1,6 @@
 {
   "name": "lpa-ui-kit",
-  "version": "1.0.0003",
+  "version": "1.0.0004",
   "description": "Storybook_ui_components",
   "main": "./dist/index.js",
   "scripts": {
@@ -29,12 +29,13 @@
     "@storybook/testing-library": "^0.2.2",
     "@types/node-sass": "^4.11.7",
     "@types/react": "^18.2.42",
+    "@types/react-dom": "^18.2.18",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "css-loader": "^6.8.1",
     "css-modules-typescript-loader": "^4.0.1",
     "dotenv-webpack": "^8.0.1",
-    "eslint": "^8.56.0",
+    "eslint": "^8.22.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
     "prop-types": "^15.8.1",
