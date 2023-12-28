@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 
 interface IPortal {
   children:React.ReactNode
-  anchor?:React.ReactNode
+  anchor:DocumentFragment
 }
 const Portal:FC<IPortal> = ({ children, anchor = document.body }) => ReactDOM.createPortal(children, anchor);
 

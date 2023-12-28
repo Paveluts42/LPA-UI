@@ -4,8 +4,8 @@ import { IconsEnums } from '../../Icons/set/IconsEnum';
 
 export interface IconI {
   component?:IconsEnums
-  size?: string | number;
-  color?: string;
+  size?: any;
+  color?: any;
 }
 
 const Icon: FC<IconI> = (props) => {

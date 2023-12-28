@@ -4,7 +4,7 @@ import { ThemeEnums } from '../Enums/typeEnums';
 const themeObject = { light: 'light', dark: 'dark' };
 
 interface IThemeContext {
-  theme: ThemeEnums,
+  theme: string,
   setCurrentTheme: Dispatch<SetStateAction<ThemeEnums>>
 }
 
@@ -21,7 +21,7 @@ export const ThemeProvider: React.FC<{ theme:ThemeEnums;children:React.ReactNode
   return (
     <ThemeContext.Provider
       value={{
-        theme: themeObject[currentTheme] || 'light',
+        theme: themeObject[currentTheme],
         setCurrentTheme,
       }}
     >
