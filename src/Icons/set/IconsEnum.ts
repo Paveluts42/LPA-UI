@@ -8,6 +8,8 @@ export enum IconsList {
 
   ArrowUp = 'ArrowUp',
 
+  ArrowDown = 'ArrowDown',
+
   Done = 'Done',
 
   Edit = 'Edit',

@@ -1,0 +1,112 @@
+import {Icon, ThemeProvider, Tooltip} from "../index";
+
+
+# Компонент тултип
+<div>
+
+
+    <div>
+        Есть поддержка темы.
+
+        Вложенный компонент должен быть блоком !!
+        <hr/>
+        <b>Доступные свойства-</b>
+        <p>
+            text:контент тултипа
+        </p>
+        <p>
+            className?:есть возможность назначить свой класс
+        </p>
+        <p>
+            placement?:Позицианирование адаптируется под доступное место.\
+            Сверху,Снизу,Слева,Справа
+        </p>
+        <p>
+            disabled?:Доступность
+        </p>
+        <p>
+            space?:Отступ
+        </p>
+    </div>
+    <div style={{display: 'flex', justifyContent: 'space-between', width: "100%"}}>
+        <ThemeProvider theme={"light"}>
+            <div style={{width: "100%"}}>
+                <div style={{padding: 50, width: "100%"}}>
+                    <Tooltip placement={"bottom"} text={"down"}>
+                        <div style={{width: 24, padding: 20, display: "flex", alignItems: 'center'}}>
+                            <Icon component={"ArrowDown"}/>
+                        </div>
+                    </Tooltip>
+                </div>
+                <div style={{padding: 50, width: "100%"}}>
+
+                    <Tooltip placement={"top"} text={"up"}>
+                        <div style={{width: 24, padding: 20, display: "flex", alignItems: 'center'}}>
+                            <Icon component={"ArrowUp"}/>
+                        </div>
+                    </Tooltip>
+                </div>
+                <div style={{padding: 50, width: "100%"}}>
+
+                    <Tooltip placement={"left"} text={"left"}>
+                        <div style={{width: 24, padding: 20, display: "flex", alignItems: 'center'}}>
+                            <Icon component={"ArrowLeft"}/>
+                        </div>
+                    </Tooltip>
+                </div>
+                <div style={{padding: 50, width: "100%"}}>
+
+                    <Tooltip placement={"right"} text={"right"}>
+                        <div style={{width: 24, padding: 20, display: "flex", alignItems: 'center'}}>
+                            <Icon component={"ArrowRight"}/>
+                        </div>
+                    </Tooltip>
+                </div>
+            </div>
+        </ThemeProvider>
+        <ThemeProvider theme={"dark"}>
+            <div style={{
+                background: "#ccc", width: "100%"
+            }}>
+                <div style={{padding: 50, width: "100%"}}>
+                    <Tooltip placement={"bottom"} text={"down"}>
+                        <div style={{width: 24, padding: 20, display: "flex", alignItems: 'center'}}>
+                            <Icon component={"ArrowDown"}/>
+                        </div>
+                    </Tooltip>
+                </div>
+                <div style={{padding: 50, width: "100%"}}>
+
+                    <Tooltip placement={"top"} text={"up"}>
+                        <div style={{width: 24, padding: 20, display: "flex", alignItems: 'center'}}>
+                            <Icon component={"ArrowUp"}/>
+                        </div>
+                    </Tooltip>
+                </div>
+                <div style={{padding: 50, width: "100%"}}>
+
+                    <Tooltip placement={"left"} text={"left"}>
+                        <div style={{width: 24, padding: 20, display: "flex", alignItems: 'center'}}>
+                            <Icon component={"ArrowLeft"}/>
+                        </div>
+                    </Tooltip>
+                </div>
+                <div style={{padding: 50, width: "100%"}}>
+
+                    <Tooltip placement={"right"} text={"right"}>
+                        <div style={{width: 24, padding: 20, display: "flex", alignItems: 'center'}}>
+                            <Icon component={"ArrowRight"}/>
+                        </div>
+                    </Tooltip>
+                </div>
+
+            </div>
+        </ThemeProvider>
+
+    </div>
+
+</div>
+
+
+
+
