@@ -1,4 +1,4 @@
-export const useClasses = (classes:string[]) => classes.join(' ');
+export const useClasses = (classes:string[] | undefined[]) => classes.join(' ');
 
 export const useRandomString = (lengthString:number = 6) => {
   let text = '';

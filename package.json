@@ -1,12 +1,12 @@
 {
   "name": "lpa-ui-kit",
-  "version": "1.0.0006",
+  "version": "1.0.0009",
   "description": "Storybook_ui_components",
   "main": "./dist/index.js",
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "storybook dev  -p 6006",
+    "start": "storybook dev  -p 6006",
     "build-storybook": "storybook build",
     "deploy": "storybook build && gh-pages -d storybook-static"
   },

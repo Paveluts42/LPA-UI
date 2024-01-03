@@ -12,7 +12,7 @@ export const ThemeContext = React.createContext<IThemeContext>({
   theme: 'light',
 } as IThemeContext);
 
-export const ThemeProvider: React.FC<{ theme:ThemeEnums;children:React.ReactNode }> = ({ theme = 'light', children }) => {
+export const ThemeProvider: React.FC<{ theme: ThemeEnums ;children:React.ReactNode }> = ({ theme = 'light', children }) => {
   const [currentTheme, setCurrentTheme] = React.useState<ThemeEnums>(theme);
 
   useEffect(() => {
