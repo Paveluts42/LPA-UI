@@ -21,3 +21,6 @@ start :"npm run storybook"
     Icon,
     Switch,
     Tooltip,
+    Box,
+    Flex,
+    Grid

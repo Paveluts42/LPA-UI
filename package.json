@@ -1,6 +1,6 @@
 {
   "name": "lpa-ui-kit",
-  "version": "1.0.0009",
+  "version": "1.0.0010",
   "description": "Storybook_ui_components",
   "main": "./dist/index.js",
   "scripts": {

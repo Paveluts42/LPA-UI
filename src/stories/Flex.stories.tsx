@@ -8,7 +8,9 @@ const meta: Meta<typeof Flex> = {
 export default meta;
 type Story = StoryObj<typeof Flex>;
 
-export const SwitchView: Story = {
+// Todo add docx
+
+export const FlexView: Story = {
     args:{
         width:200,
         height:200,

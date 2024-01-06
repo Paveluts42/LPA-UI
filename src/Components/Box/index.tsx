@@ -4,7 +4,7 @@ import { useClasses } from '../../hooks';
 import ST from './box.module.scss';
 
 export interface IBox {
-  elementType?: string ;
+  elementType?: keyof React.JSX.IntrinsicElements ;
   children?: React.ReactNode | React.ReactNode[];
   width?:string | number | undefined;
   display?:string | undefined;

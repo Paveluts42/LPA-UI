@@ -8,7 +8,9 @@ const meta: Meta<typeof Box> = {
 export default meta;
 type Story = StoryObj<typeof Box>;
 
-export const SwitchView: Story = {
+// Todo add docx
+
+export const BoxView: Story = {
     args:{
             width:200,
         height:200,

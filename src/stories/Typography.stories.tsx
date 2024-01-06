@@ -9,6 +9,8 @@ const meta: Meta<typeof Typography> = {
 export default meta;
 type Story = StoryObj<typeof Typography>;
 
+// Todo add docx
+
 export const TypographyView: Story = {
     args:{
     children:'test'

@@ -6,6 +6,7 @@ import Switch from './Components/Switch';
 import Tooltip from './Components/Tooltip';
 import Box from './Components/Box';
 import Flex from './Components/Flex';
+import Grid from './Components/Grid';
 
 export {
   Button,
@@ -17,4 +18,5 @@ export {
   Tooltip,
   Box,
   Flex,
+  Grid,
 };

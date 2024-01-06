@@ -1,0 +1,64 @@
+import {Box, Button, Grid, Typography} from "../index";
+
+
+## Grid
+
+
+
+
+
+<Grid container={true}    gtColumns={"1fr 4fr "} gtAreas={['sidebar header  header','sidebar content content']}>
+    <Grid gArea={'header'} backgroundColor={"red"} height={60}>header</Grid>
+    <Grid gArea={'sidebar'} backgroundColor={'yellow'} >
+        <ol>
+
+            <li>
+                <Typography>main</Typography>
+            </li>       <li>
+            <Typography>main</Typography>
+        </li>       <li>
+            <Typography>main</Typography>
+        </li>       <li>
+            <Typography>main</Typography>
+        </li>       <li>
+            <Typography>main</Typography>
+        </li>       <li>
+            <Typography>main</Typography>
+        </li>
+
+        </ol>
+    </Grid>
+    <Grid gArea={'content'} backgroundColor={'orange'}  padding={20}>
+        <form  method="POST">
+            <p>Сколько Вам лет?</p>
+            <ol>
+                <li><input type="radio" name="age" value="18" checked />младше 18</li>
+                <li><input type="radio" name="age" value="18-24"/>от 18 до 24</li>
+                <li><input type="radio" name="age" value="25-34"/>от 25 до 35</li>
+                <li><input type="radio" name="age" value="35-50"/>более 35</li>
+            </ol>
+            <Button>test</Button>
+        </form>
+    </Grid>
+
+</Grid>
+<br/>
+<br/>
+<br/>
+<br/>
+
+<Grid container={true}  gap={10}   gtColumns={"repeat(6,100px)"}  gtRows={"100px 100px 100px"} gaFlow={'column'}>
+    <Box backgroundColor={'#ccc'}>1</Box>
+    <Box backgroundColor={'#ccc'}>2</Box>
+    <Box backgroundColor={'#ccc'}>3</Box>
+    <Box backgroundColor={'#ccc'}>4</Box>
+    <Box backgroundColor={'#ccc'}>5</Box>
+    <Box backgroundColor={'#ccc'}>6</Box>
+    <Box backgroundColor={'#ccc'}>7</Box>
+    <Box backgroundColor={'#ccc'}>8</Box>
+    <Box backgroundColor={'#ccc'}>9</Box>
+    <Box backgroundColor={'#ccc'}>10</Box>
+    <Box backgroundColor={'#ccc'}>11</Box>
+    <Box backgroundColor={'#ccc'}>12</Box>
+
+</Grid>
