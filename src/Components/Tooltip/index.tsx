@@ -13,6 +13,7 @@ interface ITooltip {
   placement?:'bottom' | 'top' | 'left' | 'right',
   disabled?:boolean
   space?:number
+  arrow?:boolean
 }
 const positionCount = (p) => ({
   current: p,
@@ -33,6 +34,10 @@ const positionCount = (p) => ({
 const pointInit = () => ({
   x: null,
   y: null,
+  arrow_x: null,
+  arrow_y: null,
+
+  pos: null,
   reset(p) {
     this.x = p.x;
     this.y = p.y;
@@ -64,18 +69,30 @@ const getPosition = (el, tol, placement, space, area) => {
       case 'top':
         val.x = elRef.left + (el.offsetWidth - tol.offsetWidth) / 2;
         val.y = elRef.top - (tol.offsetHeight + space);
+        val.arrow_x = elRef.left + (el.offsetWidth - tol.offsetWidth) / 2 + tol.clientWidth / 2 - 8;
+        val.arrow_y = elRef.top - (tol.offsetHeight + space) + tol.clientHeight + space - 7;
+        val.pos = 'top';
         break;
       case 'right':
         val.x = elRef.right + space;
         val.y = elRef.top + (el.offsetHeight - tol.offsetHeight) / 2;
+        val.arrow_x = elRef.right + space - tol.offsetWidth / 2 + 8;
+        val.arrow_y = elRef.top + (el.offsetHeight - tol.offsetHeight) / 2 + tol.offsetHeight / 2;
+        val.pos = 'right';
         break;
       case 'left':
         val.x = elRef.left - (tol.offsetWidth + space);
         val.y = elRef.top + (el.offsetHeight - tol.offsetHeight) / 2;
+        val.arrow_x = elRef.left - (tol.offsetWidth + space) + tol.clientWidth;
+        val.arrow_y = elRef.top + (el.offsetHeight - tol.offsetHeight) / 2 + tol.offsetHeight / 2;
+        val.pos = 'left';
         break;
       default:
         val.x = elRef.left + (el.offsetWidth - tol.offsetWidth) / 2;
         val.y = elRef.bottom + space;
+        val.arrow_x = elRef.left + (el.offsetWidth - tol.offsetWidth) / 2 + tol.clientWidth / 2 - 8;
+        val.arrow_y = (elRef.bottom + space - 7);
+        val.pos = 'bottom';
         break;
     }
     if (countRecur < 3) {
@@ -93,6 +110,7 @@ const getPosition = (el, tol, placement, space, area) => {
 
 const Tooltip :FC<ITooltip> = ({
   text, children, className = '', space = 15, placement = 'bottom',
+  arrow = false,
   disabled = false,
 }) => {
   const [show, setShow] = useState(false);
@@ -119,17 +137,36 @@ const Tooltip :FC<ITooltip> = ({
       })}
       {disabled || (
       <Portal anchor={document.body}>
-        <span
-          ref={toolRef}
-          className={classes}
-          style={{
-            top: posRef.current.y,
-            left: posRef.current.x,
-            opacity: show ? 1 : 0,
-          }}
-        >
-          {text}
-        </span>
+        <>
+          <span
+            ref={toolRef}
+            className={classes}
+            style={{
+              top: posRef.current.y,
+              left: posRef.current.x,
+              opacity: show ? 1 : 0,
+            }}
+          >
+            {text}
+            {
+              arrow ? (
+                <span
+                  style={{
+                    top: posRef.current?.arrow_y,
+                    left: posRef.current?.arrow_x,
+                    opacity: show ? 1 : 0,
+                  }}
+                  className={useClasses([
+                    cn.arrow,
+                    cn[`${posRef?.current?.pos}-${theme}`],
+                  ])}
+                />
+              ) : <></>
+            }
+          </span>
+
+        </>
+
       </Portal>
       )}
     </>

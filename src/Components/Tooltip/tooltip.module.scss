@@ -9,11 +9,118 @@
   padding: 7px 10px;
   border-radius: 4px;
   z-index: 99999;
-  display: inline-block;
-  white-space: nowrap;
+  display:inline-block;
+  word-wrap: normal;
+  word-break: normal;
+  max-width: 200px;
   overflow: hidden;
   @include fonts.font
 }
+.arrow{
+  position: fixed;
+  border-radius: 3px;
+
+  }
+.top-light {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &:before, &:after {
+    top: 100%;
+    left: 50%;
+    content: '';
+    position: fixed;
+    margin-top: -9px;
+    border: 9px solid transparent;
+    border-top-color: black;
+
+
+  }
+}
+.top-dark {
+  transform: translateX(-50%);
+
+  &:before, &:after {
+    content: '';
+    position: fixed;
+    margin-top: -9px;
+    border: 9px solid transparent;
+    border-top-color: white;
+  }
+}
+.bottom-light{
+    transform:translateX(50%);
+    &:before ,&:after{
+      content: '';
+      position: fixed;
+      border: 9px solid transparent;
+      margin-top: -9px;
+        border-bottom-color: black;
+    }
+}
+.bottom-dark{
+    transform:translateX(50%);
+    &:before ,&:after{
+      content: '';
+      position: fixed;
+      border: 9px solid transparent;
+      margin-top: -9px;
+      border-bottom-color: white;
+
+    }
+}
+.right-light{
+    transform:translateY(-50%);
+    &:before ,&:after{
+      content: '';
+      position: fixed;
+      border: 9px solid transparent;
+      margin-top: -9px;
+      border-right-color: black;
+
+    }
+}
+.right-dark{
+    transform:translateY(-50%);
+    &:before ,&:after{
+      content: '';
+      position: fixed;
+      border: 9px solid transparent;
+      margin-top: -9px;
+      border-right-color: white;
+
+    }
+}
+  .left-light{
+    transform:translateY(-50%);
+    &:before ,&:after{
+      content: '';
+      position: fixed;
+      border: 9px solid transparent;
+      margin-top: -9px;
+      border-left-color: black;
+
+    }
+  }
+.left-dark{
+    transform:translateY(-50%);
+    &:before ,&:after{
+      content: '';
+      position: fixed;
+      border: 9px solid transparent;
+      margin-top: -9px;
+      border-left-color: white;
+
+    }
+  }
+
+
+
+
+
+
+
 
 .light{
   background: rgba(0,0,0,.9);
