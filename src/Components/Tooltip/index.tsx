@@ -67,31 +67,31 @@ const getPosition = (el, tol, placement, space, area) => {
     const pos = positionCount(placement);
     switch (pos.current) {
       case 'top':
-        val.x = elRef.left + (el.offsetWidth - tol.offsetWidth) / 2;
-        val.y = elRef.top - (tol.offsetHeight + space);
-        val.arrow_x = elRef.left + (el.offsetWidth - tol.offsetWidth) / 2 + tol.clientWidth / 2 - 8;
-        val.arrow_y = elRef.top - (tol.offsetHeight + space) + tol.clientHeight + space - 7;
+        val.x = Math.round(elRef.left + (el.offsetWidth - tol.offsetWidth) / 2);
+        val.y = Math.round(elRef.top - (tol.offsetHeight + space));
+        val.arrow_x = Math.round(elRef.left + (el.offsetWidth - tol.offsetWidth) / 2 + tol.clientWidth / 2 - 8);
+        val.arrow_y = Math.round(elRef.top - (tol.offsetHeight + space) + tol.clientHeight + space - 7);
         val.pos = 'top';
         break;
       case 'right':
-        val.x = elRef.right + space;
-        val.y = elRef.top + (el.offsetHeight - tol.offsetHeight) / 2;
-        val.arrow_x = elRef.right + space - tol.offsetWidth / 2 + 8;
-        val.arrow_y = elRef.top + (el.offsetHeight - tol.offsetHeight) / 2 + tol.offsetHeight / 2;
+        val.x = Math.round(elRef.right + space);
+        val.y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2);
+        val.arrow_x = Math.round(elRef.right);
+        val.arrow_y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2 + tol.offsetHeight / 2);
         val.pos = 'right';
         break;
       case 'left':
-        val.x = elRef.left - (tol.offsetWidth + space);
-        val.y = elRef.top + (el.offsetHeight - tol.offsetHeight) / 2;
-        val.arrow_x = elRef.left - (tol.offsetWidth + space) + tol.clientWidth;
-        val.arrow_y = elRef.top + (el.offsetHeight - tol.offsetHeight) / 2 + tol.offsetHeight / 2;
+        val.x = Math.round(elRef.left - (tol.offsetWidth + space));
+        val.y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2);
+        val.arrow_x = Math.round(elRef.left - (tol.offsetWidth + space) + tol.offsetWidth);
+        val.arrow_y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2 + tol.offsetHeight / 2);
         val.pos = 'left';
         break;
       default:
-        val.x = elRef.left + (el.offsetWidth - tol.offsetWidth) / 2;
-        val.y = elRef.bottom + space;
-        val.arrow_x = elRef.left + (el.offsetWidth - tol.offsetWidth) / 2 + tol.clientWidth / 2 - 8;
-        val.arrow_y = (elRef.bottom + space - 7);
+        val.x = Math.round(elRef.left + (el.offsetWidth - tol.offsetWidth) / 2);
+        val.y = Math.round(elRef.bottom + space);
+        val.arrow_x = Math.round(elRef.left + (el.offsetWidth - tol.offsetWidth) / 2 + tol.clientWidth / 2 - 8);
+        val.arrow_y = Math.round(elRef.bottom + space - 7);
         val.pos = 'bottom';
         break;
     }
@@ -109,7 +109,9 @@ const getPosition = (el, tol, placement, space, area) => {
 };
 
 const Tooltip :FC<ITooltip> = ({
-  text, children, className = '', space = 15, placement = 'bottom',
+  text, children, className = '',
+  // Todo need fix space prop
+  space = 15, placement = 'bottom',
   arrow = false,
   disabled = false,
 }) => {
