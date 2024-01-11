@@ -13,7 +13,12 @@
   word-break: normal;
   max-width: 200px;
   overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
   @include fonts.font
+}
+.tooltipShow{
+  opacity: 1;
 }
 .arrow{
   position: fixed;
@@ -32,7 +37,7 @@
     position: fixed;
     margin-top: -9px;
     border: 9px solid transparent;
-    border-top-color: black;
+    border-top-color: rgba(0,0,0,.9);
 
 
   }
@@ -55,7 +60,7 @@
       position: fixed;
       border: 9px solid transparent;
       margin-top: -9px;
-        border-bottom-color: black;
+        border-bottom-color: rgba(0,0,0,.9);
     }
 }
 .bottom-dark{
@@ -76,7 +81,7 @@
       position: fixed;
       border: 9px solid transparent;
       margin-top: -9px;
-      border-right-color: black;
+      border-right-color: rgba(0,0,0,.9);
 
     }
 }
@@ -98,7 +103,7 @@
       position: fixed;
       border: 9px solid transparent;
       margin-top: -9px;
-      border-left-color: black;
+      border-left-color: rgba(0,0,0,.9);
 
     }
   }

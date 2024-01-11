@@ -70,20 +70,20 @@ const getPosition = (el, tol, placement, space, area) => {
         val.x = Math.round(elRef.left + (el.offsetWidth - tol.offsetWidth) / 2);
         val.y = Math.round(elRef.top - (tol.offsetHeight + space));
         val.arrow_x = Math.round(elRef.left + (el.offsetWidth - tol.offsetWidth) / 2 + tol.clientWidth / 2 - 8);
-        val.arrow_y = Math.round(elRef.top - (tol.offsetHeight + space) + tol.clientHeight + space - 7);
+        val.arrow_y = Math.round(elRef.top - (tol.offsetHeight + space) + tol.clientHeight + 7);
         val.pos = 'top';
         break;
       case 'right':
         val.x = Math.round(elRef.right + space);
         val.y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2);
-        val.arrow_x = Math.round(elRef.right);
+        val.arrow_x = Math.round(elRef.right - 16 + space);
         val.arrow_y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2 + tol.offsetHeight / 2);
         val.pos = 'right';
         break;
       case 'left':
         val.x = Math.round(elRef.left - (tol.offsetWidth + space));
         val.y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2);
-        val.arrow_x = Math.round(elRef.left - (tol.offsetWidth + space) + tol.offsetWidth);
+        val.arrow_x = Math.round(elRef.left - (tol.offsetWidth + space) + tol.offsetWidth - 1);
         val.arrow_y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2 + tol.offsetHeight / 2);
         val.pos = 'left';
         break;
@@ -110,7 +110,6 @@ const getPosition = (el, tol, placement, space, area) => {
 
 const Tooltip :FC<ITooltip> = ({
   text, children, className = '',
-  // Todo need fix space prop
   space = 15, placement = 'bottom',
   arrow = false,
   disabled = false,
@@ -129,6 +128,7 @@ const Tooltip :FC<ITooltip> = ({
   const classes = useClasses([
     className,
     cn.tooltip,
+    show ? cn.tooltipShow : '',
     cn[theme],
   ]);
   return (
@@ -146,7 +146,6 @@ const Tooltip :FC<ITooltip> = ({
             style={{
               top: posRef.current.y,
               left: posRef.current.x,
-              opacity: show ? 1 : 0,
             }}
           >
             {text}
@@ -156,7 +155,6 @@ const Tooltip :FC<ITooltip> = ({
                   style={{
                     top: posRef.current?.arrow_y,
                     left: posRef.current?.arrow_x,
-                    opacity: show ? 1 : 0,
                   }}
                   className={useClasses([
                     cn.arrow,
