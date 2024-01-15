@@ -1,27 +1,42 @@
-// @ts-nocheck
-import React, { FC, useState, useRef } from 'react';
+import React, {
+  FC, useState, useRef, MouseEvent,
+} from 'react';
 import Portal from '../Portal';
 import { useTheme } from '../../theme/Theme.context';
 import { useClasses } from '../../hooks';
 import cn from './tooltip.module.scss';
 
-// Todo fix types
-interface ITooltip {
-  text:string
-  children:React.ReactNode
-  className?:string
-  placement?:'bottom' | 'top' | 'left' | 'right',
-  disabled?:boolean
-  space?:number
-  arrow?:boolean
+enum EPos {
+  bottom = 'bottom',
+  top = 'top',
+  left = 'left',
+  right = 'right',
 }
-const positionCount = (p) => ({
+interface ITooltip {
+  text: string
+  children: any
+  className?: string
+  placement?: EPos
+  disabled?: boolean
+  space?: number
+  arrow?: boolean
+}
+
+interface IPosRef {
+  x: number
+  y: number
+  arrow_y: number
+  arrow_x: number
+  pos: EPos
+}
+
+const positionCount = (p:EPos) => ({
   current: p,
   negate() {
-    if (this.current === 'left') return 'right';
-    if (this.current === 'right') return 'left';
-    if (this.current === 'top') return 'bottom';
-    if (this.current === 'bottom') return 'top';
+    if (this.current === EPos.left) return EPos.right;
+    if (this.current === EPos.right) return EPos.left;
+    if (this.current === EPos.top) return EPos.bottom;
+    if (this.current === EPos.bottom) return EPos.top;
   },
   isHorizontal() {
     return this.current === 'left' || this.current === 'right';
@@ -32,24 +47,23 @@ const positionCount = (p) => ({
 });
 
 const pointInit = () => ({
-  x: null,
-  y: null,
-  arrow_x: null,
-  arrow_y: null,
-
-  pos: null,
-  reset(p) {
+  x: 0,
+  y: 0,
+  arrow_x: 0,
+  arrow_y: 0,
+  pos: EPos.bottom,
+  reset(p:IPosRef) {
     this.x = p.x;
     this.y = p.y;
   },
-  restrictRect(bound) {
+  restrictRect(bound:any) {
     if (this.x < bound.l) this.x = bound.l;
     else if (this.x > bound.r) this.x = bound.r;
     if (this.y < bound.t) this.y = bound.t;
     else if (this.y > bound.b) this.y = bound.b;
   },
 });
-const getPosition = (el, tol, placement, space, area) => {
+const getPosition = (el:HTMLSpanElement, tol:HTMLSpanElement | any, space:number, area:HTMLElement, placement:EPos):IPosRef => {
   let countRecur = 0;
   const val = pointInit();
 
@@ -64,35 +78,35 @@ const getPosition = (el, tol, placement, space, area) => {
   // eslint-disable-next-line @typescript-eslint/no-shadow
   return (function recursive(placement) {
     countRecur++;
-    const pos = positionCount(placement);
+    const pos:any = positionCount(placement);
     switch (pos.current) {
-      case 'top':
+      case EPos.top:
         val.x = Math.round(elRef.left + (el.offsetWidth - tol.offsetWidth) / 2);
         val.y = Math.round(elRef.top - (tol.offsetHeight + space));
         val.arrow_x = Math.round(elRef.left + (el.offsetWidth - tol.offsetWidth) / 2 + tol.clientWidth / 2 - 8);
         val.arrow_y = Math.round(elRef.top - (tol.offsetHeight + space) + tol.clientHeight + 7);
-        val.pos = 'top';
+        val.pos = EPos.top;
         break;
-      case 'right':
+      case EPos.right:
         val.x = Math.round(elRef.right + space);
         val.y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2);
         val.arrow_x = Math.round(elRef.right - 16 + space);
         val.arrow_y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2 + tol.offsetHeight / 2);
-        val.pos = 'right';
+        val.pos = EPos.right;
         break;
-      case 'left':
+      case EPos.left:
         val.x = Math.round(elRef.left - (tol.offsetWidth + space));
         val.y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2);
         val.arrow_x = Math.round(elRef.left - (tol.offsetWidth + space) + tol.offsetWidth - 1);
         val.arrow_y = Math.round(elRef.top + (el.offsetHeight - tol.offsetHeight) / 2 + tol.offsetHeight / 2);
-        val.pos = 'left';
+        val.pos = EPos.left;
         break;
       default:
         val.x = Math.round(elRef.left + (el.offsetWidth - tol.offsetWidth) / 2);
         val.y = Math.round(elRef.bottom + space);
         val.arrow_x = Math.round(elRef.left + (el.offsetWidth - tol.offsetWidth) / 2 + tol.clientWidth / 2 - 8);
         val.arrow_y = Math.round(elRef.bottom + space - 7);
-        val.pos = 'bottom';
+        val.pos = EPos.bottom;
         break;
     }
     if (countRecur < 3) {
@@ -108,18 +122,20 @@ const getPosition = (el, tol, placement, space, area) => {
   }(placement));
 };
 
-const Tooltip :FC<ITooltip> = ({
+const Tooltip: FC<ITooltip> = ({
   text, children, className = '',
-  space = 15, placement = 'bottom',
+  space = 15, placement = EPos.bottom,
   arrow = false,
   disabled = false,
 }) => {
   const [show, setShow] = useState(false);
-  const posRef = useRef({ x: 0, y: 0 });
-  const toolRef = useRef();
-  const handelMOver = (e:any) => {
+  const posRef = useRef<IPosRef>({
+    x: 0, y: 0, arrow_y: 0, arrow_x: 0, pos: EPos.bottom,
+  });
+  const toolRef = useRef<HTMLSpanElement>(null);
+  const handelMOver = (e:MouseEvent<HTMLSpanElement>) => {
     setShow(true);
-    posRef.current = getPosition(e.currentTarget, toolRef.current, placement, space, document.body);
+    posRef.current = getPosition(e.currentTarget, toolRef.current, space, document.body, placement);
   };
   const handelMOut = () => {
     setShow(false);
@@ -138,36 +154,36 @@ const Tooltip :FC<ITooltip> = ({
         onMouseOut: handelMOut,
       })}
       {disabled || (
-      <Portal anchor={document.body}>
-        <>
-          <span
-            ref={toolRef}
-            className={classes}
-            style={{
-              top: posRef.current.y,
-              left: posRef.current.x,
-            }}
-          >
-            {text}
-            {
-              arrow ? (
-                <span
-                  style={{
-                    top: posRef.current?.arrow_y,
-                    left: posRef.current?.arrow_x,
-                  }}
-                  className={useClasses([
-                    cn.arrow,
-                    cn[`${posRef?.current?.pos}-${theme}`],
-                  ])}
-                />
-              ) : <></>
-            }
-          </span>
+        <Portal anchor={document.body}>
+          <>
+            <span
+              ref={toolRef}
+              className={classes}
+              style={{
+                top: posRef.current.y,
+                left: posRef.current.x,
+              }}
+            >
+              {text}
+              {
+                  arrow ? (
+                    <span
+                      style={{
+                        top: posRef.current?.arrow_y,
+                        left: posRef.current?.arrow_x,
+                      }}
+                      className={useClasses([
+                        cn.arrow,
+                        cn[`${posRef?.current?.pos}-${theme}`],
+                      ])}
+                    />
+                  ) : <></>
+              }
+            </span>
 
-        </>
+          </>
 
-      </Portal>
+        </Portal>
       )}
     </>
   );
